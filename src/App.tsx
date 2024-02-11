@@ -10,8 +10,9 @@ function App() {
   console.log('///payloadUrl', payloadUrl);
 
   const fetchResourceInfo = async () => {
-    const res = await fetch(`${payloadUrl}/get-resource`, {body:'65c804a818f492d6d0297b79'});
-    console.log("///get resource res", res);
+    const res = await fetch(`${payloadUrl}/get-resource?resource=65c804a818f492d6d0297b79`);
+    const resJson = await res.json();
+    console.log("///get resource res json", resJson);
   };
 
   useEffect(() => {
