@@ -1,19 +1,26 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import MachineView from "./views/MachineView";
 import ProjectInfoView from "./views/ProjectInfoView";
 import CalendarView from "./views/CalendarView";
-
+import { useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const payloadUrl = import.meta.env.VITE_PUBLIC_PAYLOAD_URL;
+
+  console.log('///payloadUrl', payloadUrl);
+
+  const fetchResourceInfo = async () => {
+    const res = await fetch(`${payloadUrl}/get-resource`);
+    console.log("///get resource res");
+  };
+
+  useEffect(() => {
+    fetchResourceInfo();
+  }, []);
 
   return (
     <>
-      <Tabs defaultValue="account" className="w-[full]">
+      <Tabs defaultValue="time" className="w-[full]">
         <TabsList>
           <TabsTrigger value="time">Step 1: Pick Time</TabsTrigger>
           <TabsTrigger value="project">Step 2: Project Info</TabsTrigger>
