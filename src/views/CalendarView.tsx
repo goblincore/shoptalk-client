@@ -1,5 +1,4 @@
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
-
 import dayJs from "dayjs";
 
 const localizer = dayjsLocalizer(dayJs);
